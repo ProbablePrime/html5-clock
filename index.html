@@ -5,11 +5,16 @@
 <body>
 	<span id="clock"></span>
 	<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		baconjs.interval(1).map(function() { 
+	function pad(n, width, z) {
+		z = z || '0';
+		n = String(n);
+		return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+	}
+	document.addEventListener('DOMContentLoaded', function () {
+		baconjs.interval(1).map(function () {
 			var date = new Date();
-			return date.toLocaleTimeString() + '.' + date.getMilliseconds();
-		}).onValue(function(value){
+			return date.toLocaleTimeString() + '.' + pad(date.getMilliseconds(), 3);
+		}).onValue(function (value) {
 			clock.innerHTML = value;
 		});
 	});

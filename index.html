@@ -1,0 +1,18 @@
+<html>
+<head>
+	<script src="https://wzrd.in/standalone/baconjs@latest"></script>
+</head>
+<body>
+	<span id="clock"></span>
+	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		baconjs.interval(1).map(function() { 
+			var date = new Date();
+			return date.toLocaleTimeString() + '.' + date.getMilliseconds();
+		}).onValue(function(value){
+			clock.innerHTML = value;
+		});
+	});
+	</script>
+</body>
+</html>
